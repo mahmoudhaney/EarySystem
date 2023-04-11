@@ -1,0 +1,192 @@
+.register {
+  width: 100vw;
+  height: 619px;
+  background-color: var(--secondColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.registerWrapper {
+  width: 50%;
+  height: 60%;
+  display: flex;
+}
+
+.registerLeft,
+.registerRight {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.registerLogo {
+  font-size: 50px;
+  font-weight: 800;
+  color: #4c5335;
+  margin-bottom: 10px;
+}
+
+.registerDesc {
+  font-size: 24px;
+  color: var(--mainColor);
+}
+
+.registerBox {
+  height: 300px;
+  padding: 20px;
+  background-color: var(--secondColor);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 140%;
+}
+
+.registerInput {
+  height: 50px;
+  border-radius: 10px;
+  border: 2px solid var(--border);
+  font-size: 20px;
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.registerInput:focus {
+  outline: none;
+}
+
+.registerButton {
+  height: 50px;
+  border-radius: var(--BigBorderRadius);
+  border: none;
+  background-color: var(--mainColor);
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  padding-top: 5px;
+  margin-top: 5px;
+}
+
+.RegisterButton {
+  width: 100%;
+  align-self: center;
+  height: 40px;
+  border-radius: var(--BigBorderRadius);
+  border: none;
+  background-color: var(--mainColor);
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  padding-top: 10px;
+  margin-top: 20px;
+}
+
+.registerButton:hover {
+  background-color: var(--button-hover);
+  transform: scale(1.1);
+  border-color: var(--mainColor);
+}
+
+.RegisterButton:hover {
+  background-color: var(--button-hover);
+  transform: scale(1.1);
+  border-color: var(--mainColor);
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  .register {
+  height: auto;
+  padding: 50px 0;
+  }
+  
+  .registerWrapper {
+  flex-direction: column;
+  width: 80%;
+  height: auto;
+  justify-content: flex-start;
+  }
+  
+  .registerBox {
+  height: auto;
+  width: 100%;
+  }
+  
+  .registerLeft,
+  .registerRight {
+  flex: none;
+  width: 100%;
+  }
+  
+  .RegisterButton {
+  margin-top: 10px;
+  }
+  }
+
+  @media only screen and (max-width: 992px) {
+    .register {
+    height: auto;
+    padding: 70px 0;
+    }
+    
+    .registerWrapper {
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+    justify-content: flex-start;
+    }
+    
+    .registerBox {
+    height: auto;
+    width: 100%;
+    }
+    
+    .registerLeft,
+    .registerRight {
+    flex: none;
+    width: 100%;
+    }
+    
+    .RegisterButton {
+    margin-top: 30px;
+    }
+    }
+
+
+    @media only screen and (max-width: 1200px) {
+      .register {
+      height: auto;
+      padding: 80px 0;
+      }
+      
+      .registerWrapper {
+      flex-direction: column;
+      width: 100%;
+      height: auto;
+      justify-content: flex-start;
+      }
+      
+      .registerBox {
+      height: auto;
+      width: 100%;
+      }
+      
+      .registerLeft,
+      .registerRight {
+      flex: none;
+      width: 100%;
+      }
+      
+      .RegisterButton {
+      margin-top: 50px;
+      }
+      }    

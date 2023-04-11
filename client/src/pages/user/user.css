@@ -1,0 +1,116 @@
+body {
+  background-color: var(--secondColor);
+}
+
+.profile-head {
+  text-align: center;
+  padding: 20px;
+  color: var(--mainColor);
+}
+.form-box-content {
+  background-color: var(--secondColor);
+  padding: 60px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.user-Form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.label-user {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.user-input {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--secondColor);
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.user-btn {
+  padding: 10px 20px;
+  background-color: var(--mainColor);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.user-btn:hover {
+  background-color: var(--secondColor);
+  transition: translate(1.05);
+}
+
+@media screen and (max-width: 768px) {
+  .form-box-content {
+    padding: 40px;
+  }
+
+  .user-Form {
+    max-width: 100%;
+  }
+
+  .label-user {
+    font-size: 16px;
+  }
+
+  .user-input {
+    padding: 8px;
+    font-size: 16px;
+  }
+
+  .user-btn {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .form-box-content {
+    padding: 60px;
+  }
+
+  .user-Form {
+    max-width: 100%;
+  }
+
+  .label-user {
+    font-size: 20px;
+  }
+
+  .user-input {
+    padding: 18px;
+    font-size: 20px;
+  }
+
+  .user-btn {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .form-box-content {
+    padding: 80px;
+  }
+
+  .user-Form {
+    max-width: 100%;
+  }
+
+  .label-user {
+    font-size: 30px;
+  }
+
+  .user-input {
+    padding: 28px;
+    font-size: 26px;
+  }
+
+  .user-btn {
+    font-size: 26px;
+  }
+}
