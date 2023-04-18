@@ -1,33 +1,87 @@
 import React from 'react';
-import {Link} from "react-router-dom";
-import '../login/login.css'
-
+import {Link,useNavigate} from "react-router-dom";
+import {useState} from "react";
+import axios from "axios";
+import { setAuthUser } from "../../helper/Storage";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
 const Login = () => {
+
+
+    const navigate = useNavigate();
+    const [login, setLogin] = useState({
+        email: "",
+        password: "",
+        loading: false,
+        err: [],
+    });
+
+    const LoginFun = (event) => {
+        event.preventDefault();
+        setLogin({ ...login, loading: true, err: [] });
+        axios.post("http://localhost:8000/auth/login", {
+                email: login.email,
+                password: login.password,
+            })
+            .then((resp) => {
+                setLogin({ ...login, loading: false, err: [] });
+                setAuthUser(resp.data);
+                navigate("/");
+            })
+            .catch((errors) => {
+                setLogin({
+                    ...login,
+                    loading: false,
+                    err: errors.response.data.errors,
+                });
+            });
+    };
+
 
 
 
     return (
-        <div className="login">
-            <div className="loginWrapper">
-                <div className="loginLeft">
-                    <h3 className="loginLogo">Welcome to our Free Online Hearing Test</h3>
-                    <span className="loginDesc">
-                        Do you have hearing loss? Take our online hearing test to find out.
-                    </span>
-                </div>
-                <form >
-                <div className="loginRight">
-                    <div className="loginBox">
-                        <input  placeholder="Email" className="loginInput"  />
-                        <input  placeholder="Password" className="loginInput"  />
-                        <button  className="loginButton" type="submit">Log In</button>
-                        <Link className="loginRegisterButton" to="/register">Create a New Account</Link>
-                    </div>
-                </div>
-                </form>
-            </div>
+        <div className="login-container">
+          <h1>Login Form</h1>
+    
+          {login.err.map((error, index) => (
+            <Alert key={index} variant="danger" className="p-2">
+              {error.msg}
+            </Alert>
+          ))}
+    
+          <Form onSubmit={LoginFun}>
+            <Form.Group className="mb-3">
+              <Form.Control
+                type="email"
+                placeholder="Email"
+                required
+                value={login.email}
+                onChange={(e) => setLogin({ ...login, email: e.target.value })}
+              />
+            </Form.Group>
+    
+            <Form.Group className="mb-3">
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                required
+                value={login.password}
+                onChange={(e) => setLogin({ ...login, password: e.target.value })}
+              />
+            </Form.Group>
+    
+            <Button
+              className="btn btn-dark w-100"
+              variant="primary"
+              type="submit"
+              disabled={login.loading === true}>
+              Login
+            </Button>
+          </Form>
         </div>
-    );
-};
+      );
+    };
 
 export default Login;
