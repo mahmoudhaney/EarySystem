@@ -3,6 +3,7 @@ footer {
     background-color: var(--mainColor);
     color: var(--thirdColor);
     text-align: center;
+    margin-bottom: 0px;
 }
 
 footer p {

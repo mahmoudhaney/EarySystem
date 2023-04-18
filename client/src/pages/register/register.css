@@ -1,0 +1,73 @@
+.body{
+  background-color: var(--secondColor);
+}
+
+.login-container {
+  width: 50%;
+  margin: 5rem auto;
+  background-color: var(--mainColor) ;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+
+}
+
+.login-container h1 {
+  text-align: center;
+  color: var(--thirdColor);
+  margin-bottom: 2rem;
+}
+
+
+.login-container button{
+  width: 100%;
+  background-color: var(--secondColor);
+  color: var(--mainColor);
+  padding: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.login-container button:hover{
+  background-color: var(--thirdColor);
+  color: var(--mainColor);
+}
+
+
+@media screen and (max-width: 768px) {
+  .login-container {
+    width: 90%;
+    margin-bottom: 168px;
+  }
+}
+  
+
+@media screen and (max-width: 992px) {
+  .login-container {
+    width: 70%;
+    margin-bottom: 168px;
+  }
+}
+
+
+@media screen and (max-width: 1200px) {
+  .login-container {
+    width: 60%;
+    margin-bottom: 800px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+

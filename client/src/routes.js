@@ -8,6 +8,7 @@ import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Admin from "./pages/admin/Admin"
 import User from "./pages/user/User";
+import Guest from "./middleware/Guest";
 
 export const router = createBrowserRouter([
     {
@@ -26,6 +27,20 @@ export const router = createBrowserRouter([
                 path: "/contact",
                 element: <Contact />,
             },
+            //Guest middleware
+            {
+                element: <Guest/>,
+                children: [
+                    {
+                        path: "/login",
+                        element: <Login />,
+                    },
+                    {
+                        path: "/register",
+                        element: <Register />,
+                    }
+                ]
+            },
             {
                 path: "/login",
                 element: <Login />,
@@ -33,6 +48,17 @@ export const router = createBrowserRouter([
             {
                 path: "/register",
                 element: <Register />,
+            },
+
+            //admin middleware
+            {
+                element: <Admin/>,
+                children: [
+                    {
+                        path: "/admin",
+                        element: <Admin />,
+                    }
+                ]
             },
             {
                 path: "/admin",
