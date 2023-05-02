@@ -74,4 +74,12 @@ header nav ul li a:hover {
         display: block;
         width: 90%;
     }
+
+    header .logo a {
+        width: unset;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        justify-content: center;
+    } 
 }
