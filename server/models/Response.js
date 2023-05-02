@@ -116,6 +116,32 @@ class Response {
             console.log(error);
         }
     }
+    
+    static async IsValidResponse(response_id, question_id) {
+        try {
+            const query = util.promisify(connection.query).bind(connection);
+            const IsValidResponse = await query(`select question_id from responses where ID = ${response_id};`);
+            if (IsValidResponse[0].question_id == question_id) {
+                return true;
+            }
+            return false;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    static async IsCorrect(id) {
+        try {
+            const query = util.promisify(connection.query).bind(connection);
+            const response = await query("select is_correct from responses where id = ? ", [id]);
+            if (response[0].is_correct) {
+                return true;
+            }
+            return false;
+        } catch (error) {
+            console.log(error);
+        }
+    }
 };
 
 module.exports = {Response:Response};

@@ -77,6 +77,24 @@ class User {
         this.role = role;
     }
 
+    static async IsExist(id) {
+        const query = util.promisify(connection.query).bind(connection);
+        const user = await query("select * from users where id = ? ", [id]);
+        if (user[0]) {
+            return true;
+        }
+        return false;
+    }
+
+    static async IsValid(id) {
+        const query = util.promisify(connection.query).bind(connection);
+        const user = await query("select * from exams where user_id = ? and status = 1", [id]);
+        if (user[0]) {
+            return true;
+        }
+        return false;
+    }
+
     static async IsEmailExist(email) {
         try {
             const query = util.promisify(connection.query).bind(connection);
