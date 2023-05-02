@@ -17,6 +17,8 @@ router.post(
                 res.status(400).json({errors: validationResult(req).array()});
             } else if (!await Question.IsExist(req.body.question_id)) {
                 res.status(404).json({msg: "question not found !"});
+            } else if (!await Question.IsActive(req.body.question_id)) {
+                res.status(404).json({msg: "question is not active !"});
             } else if (req.body.is_correct == 1 && await Response.AnyCorrectResponse(req.body.question_id))  {
                 res.status(400).json({msg: "this question already has a correct response !"});
             }
