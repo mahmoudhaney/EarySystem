@@ -1,15 +1,13 @@
-import React from "react";
+import React from 'react';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
-import { Link } from 'react-router-dom';
-import './css/login.css';
 
-const Register = () => {
+const AddUser = () => {
     return (
         <div className="row section-padding">
             <div className="col-6">
-                <h1 className="section-title">Registration Form</h1>
+                <h1 className="section-title">Add User</h1>
 
                 <div className="login">
                     <Alert variant="danger">
@@ -34,14 +32,8 @@ const Register = () => {
                         </Form.Group>
 
                         <Button className="btn btn-dark w-100 mb-3" variant="primary" type="submit">
-                        Register
+                        Add
                         </Button>
-
-                        <Link to={'/login'}>
-                            <Button className="btn btn-dark w-100" variant="primary" type="submit">
-                            Login
-                            </Button>
-                        </Link>
                     </Form>
                 </div>
             </div>
@@ -49,4 +41,4 @@ const Register = () => {
     );
 };
 
-export default Register;
+export default AddUser;

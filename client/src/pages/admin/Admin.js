@@ -1,9 +1,12 @@
 import React from 'react';
+import Sidebar from './componenets/Sidebar';
+import Profile from './componenets/Profile';
 
 const Admin = () => {
     return (
-        <div>
-            <h1>Admin Home</h1>
+        <div className='row section-padding justify-content-around'>
+            <Sidebar/>
+            <Profile/>
         </div>
     );
 };

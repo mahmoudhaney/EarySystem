@@ -5,6 +5,7 @@ Global Rules
     --mainColor: #4C5335;
     --secondColor: wheat;
     --thirdColor: white;
+    --sectionColor: #f6f6f6;
     --borderColor: #c8e49a;
     --button-hover: #343824;
     --border: #4c5335;
@@ -67,14 +68,27 @@ Ready Components
     color: var(--mainColor);
     text-align: center;
     font-weight: 800;
-    font-size: 80px;
-    letter-spacing: -4px;
+    font-size: 60px;
+    letter-spacing: -3px;
+    margin-bottom: 50px;
 }
 
 .section-title + p {
     text-align: center;
     color: var(--secondColor);
     margin: -25px 0 0;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    grid-gap: 30px;
+}
+
+.special-p {
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--mainColor);
 }
 
 .general-btn {

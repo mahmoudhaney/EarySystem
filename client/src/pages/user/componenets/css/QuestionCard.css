@@ -1,0 +1,7 @@
+.TestForm audio{
+    display: block;
+    border: 1px solid;
+    border-radius: 5px;
+    background-color: var(--mainColor);
+}
+

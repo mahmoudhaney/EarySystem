@@ -38,6 +38,8 @@ header nav ul {
     list-style-type: none;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 0;
+    padding-left: 0;
 }
 
 header nav ul li {
