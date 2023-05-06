@@ -4,6 +4,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("upload"));
+const cors = require("cors");
+app.use(cors());
 
 const auth = require('./controllers/auth');
 const question = require('./controllers/question');

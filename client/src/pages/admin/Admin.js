@@ -1,11 +1,11 @@
 import React from 'react';
-import Sidebar from './componenets/Sidebar';
+import SideBar from '../user/componenets/SideBar';
 import Profile from './componenets/Profile';
 
 const Admin = () => {
     return (
         <div className='row section-padding justify-content-around'>
-            <Sidebar/>
+            <SideBar/>
             <Profile/>
         </div>
     );

@@ -26,7 +26,7 @@ const UsersTable = () => {
                         <td>Approved</td>
                         <td>
                             <Link to={"/admin/manage-users/5"} className="btn btn-sm btn-info"> Show </Link>
-                            <Link to={"/admin/manage-users/5"} className="btn btn-sm btn-primary mx-2"> Update </Link>
+                            <Link to={"/admin/manage-users/update/5"} className="btn btn-sm btn-primary mx-2"> Update </Link>
                             <button className="btn btn-sm btn-danger"> Delete </button>
                         </td>
                     </tr>

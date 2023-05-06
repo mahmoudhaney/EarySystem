@@ -85,7 +85,7 @@ class Question {
     static async getQuestions(search) {
         try {
             if (search) {
-                search = `where name LIKE '%${search}%'`
+                search = `where question LIKE '%${search}%'`
             }
             const query = util.promisify(connection.query).bind(connection);
             const questions = await query(`select * from questions ${search}`);

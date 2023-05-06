@@ -19,6 +19,12 @@ import AddUser from "./pages/admin/ManageUsers/AddUser";
 import UpdateUser from "./pages/admin/ManageUsers/UpdateUser";
 import Test from "./pages/user/pages/Test";
 import History from "./pages/user/pages/History";
+import QuestionDetails from "./pages/admin/ManageQuestiosn/QuestionDetails";
+import ResponseDetails from "./pages/admin/ManageResponses/ResponseDetails";
+import UserDetails from "./pages/admin/ManageUsers/UserDetails";
+import GuestAuth from "./middleware/GuestAuth";
+import UserAuth from "./middleware/UserAuth";
+import AdminAuth from "./middleware/AdminAuth";
 
 export const router = createBrowserRouter([
     {
@@ -38,15 +44,21 @@ export const router = createBrowserRouter([
                 element: <Contact />,
             },
             {
-                path: "/login",
-                element: <Login />,
-            },
-            {
-                path: "/register",
-                element: <Register />,
+                element: <GuestAuth />,
+                children: [
+                    {
+                        path: "/login",
+                        element: <Login />,
+                    },
+                    {
+                        path: "/register",
+                        element: <Register />,
+                    },
+                ]
             },
             {
                 path: "/admin",
+                element: <AdminAuth />,
                 children: [
                     {
                         path: "",
@@ -64,11 +76,15 @@ export const router = createBrowserRouter([
                                 element: <Users />,
                             },
                             {
+                                path: ":id",
+                                element: <UserDetails/>,
+                            },
+                            {
                                 path: "add",
                                 element: <AddUser/>,
                             },
                             {
-                                path: ":id",
+                                path: "update/:id",
                                 element: <UpdateUser />,
                             },
                         ]
@@ -81,11 +97,15 @@ export const router = createBrowserRouter([
                                 element: <Questions />,
                             },
                             {
+                                path: ":id",
+                                element: <QuestionDetails/>,
+                            },
+                            {
                                 path: "add",
                                 element: <AddQuestion/>,
                             },
                             {
-                                path: ":id",
+                                path: "update/:id",
                                 element: <UpdateQuestion />,
                             },
                         ]
@@ -98,11 +118,15 @@ export const router = createBrowserRouter([
                                 element: <Responses />,
                             },
                             {
+                                path: ":id",
+                                element: <ResponseDetails/>,
+                            },
+                            {
                                 path: "add",
                                 element: <AddResponse/>,
                             },
                             {
-                                path: ":id",
+                                path: "update/:id",
                                 element: <UpdateResponse />,
                             },
                         ]
@@ -111,6 +135,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/user",
+                element: <UserAuth />,
                 children: [
                     {
                         path: "",

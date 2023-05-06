@@ -1,44 +1,92 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import { Link } from 'react-router-dom';
 import './css/login.css';
+import axios from "axios";
+import { setAuthUser } from '../../helper/Storage';
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+    const navigate = useNavigate();
+
+    const [resiter, setRegister] = useState({
+        email: "",
+        password: "",
+        name: "",
+        phone: "",
+        loading: false,
+        err: null,
+    });
+
+    const RegisterFunction = (e) => {
+        e.preventDefault();
+        setRegister({ ...resiter, loading: true, err: [] });
+        axios
+            .post("http://localhost:5000/auth/register", {
+                email: resiter.email,
+                password: resiter.password,
+                name: resiter.name,
+                phone: resiter.phone
+            })
+            .then((resp) => {
+                setRegister({ ...resiter, loading: false, err: null });
+                setAuthUser(resp.data);
+                navigate("/user");
+            })
+            .catch((errors) => {
+                setRegister({ ...resiter, loading: false, err: errors.response.data.msg, });
+            });
+    };
+
     return (
         <div className="row section-padding">
             <div className="col-6">
                 <h1 className="section-title">Registration Form</h1>
 
                 <div className="login">
-                    <Alert variant="danger">
-                        Invalid email or password
-                    </Alert>
+                    {resiter.err != null && (
+                        <Alert variant="danger">
+                        {resiter.err}
+                        </Alert>
+                    )} 
 
-                    <Form>
+                    <Form onSubmit={RegisterFunction}>
                         <Form.Group className="mb-3">
-                            <Form.Control type="text" placeholder="Your Name" required />
+                            <Form.Control type="text" placeholder="Your Name" required 
+                            value={resiter.name}
+                            onChange={(e) => setRegister({ ...resiter, name: e.target.value })}
+                            />
                         </Form.Group>
 
                         <Form.Group className="mb-3">
-                            <Form.Control type="email" placeholder="Email" required />
+                            <Form.Control type="email" placeholder="Email" required 
+                            value={resiter.email}
+                            onChange={(e) => setRegister({ ...resiter, email: e.target.value })}
+                            />
                         </Form.Group>
 
                         <Form.Group className="mb-3">
-                            <Form.Control type="password" placeholder="Password" required />
+                            <Form.Control type="password" placeholder="Password" required 
+                            value={resiter.password}
+                            onChange={(e) => setRegister({ ...resiter, password: e.target.value })}
+                            />
                         </Form.Group>
 
                         <Form.Group className="mb-3">
-                            <Form.Control type="text" placeholder="Phone Number" required />
+                            <Form.Control type="text" placeholder="Phone Number" required 
+                            value={resiter.phone}
+                            onChange={(e) => setRegister({ ...resiter, phone: e.target.value })}
+                            />
                         </Form.Group>
 
-                        <Button className="btn btn-dark w-100 mb-3" variant="primary" type="submit">
+                        <Button className="btn btn-dark w-100 mb-3" variant="primary" type="submit" disabled={resiter.loading === true}>
                         Register
                         </Button>
 
                         <Link to={'/login'}>
-                            <Button className="btn btn-dark w-100" variant="primary" type="submit">
+                            <Button className="btn btn-dark w-100" variant="primary" type="button">
                             Login
                             </Button>
                         </Link>

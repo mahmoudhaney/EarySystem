@@ -51,11 +51,7 @@ router.post(
         } else if (!await User.CheckPassword(req.body.email, req.body.password)){
             res.status(404).json({msg: "wrong password !"});
         } else {
-            if (await User.IsAdmin(req.body.email)) {
-                res.status(200).json({msg: "Hi Admin"});
-            } else {
-                res.status(200).json({msg: `Hi ${await User.getName(req.body.email)}`});
-            }
+            res.status(200).json(await User.getUser(req.body.email));
         }       
     } catch (error) {
         res.status(500).json({error: error});

@@ -1,11 +1,11 @@
 import React from 'react';
-import Sidebar from '../componenets/Sidebar';
+import SideBar from '../../user/componenets/SideBar';
 import ResponsesTable from '../componenets/ResponsesTable';
 
 const Responses = () => {
     return (
         <div className='row section-padding justify-content-around'>
-            <Sidebar/>
+            <SideBar/>
             <ResponsesTable/>
         </div>
     );

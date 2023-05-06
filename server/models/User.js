@@ -176,16 +176,15 @@ class User {
         }
     }
 
-    // static async Vote(candidate_id, voter_id) {
-    //     try {
-    //         const query = util.promisify(connection.query).bind(connection);
-    //         let votes_number = (await Candidate.getNumOfVotes(candidate_id)) + 1;
-    //         await Candidate.UpdateNumOfVotes(votes_number, candidate_id);
-    //         await query(`update users set voted = 1 where ID = ${voter_id}`);
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
+    static async getUser(email) {
+        try {
+            const query = util.promisify(connection.query).bind(connection);
+            const user = await query(`select * from users where email = "${email}"`);
+            return user[0];
+        } catch (error) {
+            console.log(error);
+        }
+    }
 };
 
 module.exports = {User:User};

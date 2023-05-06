@@ -6,31 +6,31 @@ import image3 from '../../../assets/images/test3.jpg'
 
 const Tests = () => {
     return (
-        <div id="portfolio" class="section-padding">
-            <div class="container">
-                <h2 class="section-title">Tests</h2>
-                <div class="portfolio-content grid-3">
+        <div id="portfolio" className="section-padding">
+            <div className="container">
+                <h2 className="section-title">Tests</h2>
+                <div className="portfolio-content grid-3">
                     <div>
                         <img src={image1} alt=""/>
-                        <div class="project-info">
+                        <div className="project-info">
                             <h3>Test Name</h3>
-                            <p class="special-p">My creative ability is very difficult to measure because it can manifest in so many surprising and.</p>
+                            <p className="special-p">My creative ability is very difficult to measure because it can manifest in so many surprising and.</p>
                         </div>
                     </div>
     
                     <div>
                         <img src={image2} alt=""/>
-                        <div class="project-info">
+                        <div className="project-info">
                             <h3>Test Name</h3>
-                            <p class="special-p">My creative ability is very difficult to measure because it can manifest in so many surprising and.</p>
+                            <p className="special-p">My creative ability is very difficult to measure because it can manifest in so many surprising and.</p>
                         </div>
                     </div>
     
                     <div>
                         <img src={image3} alt=""/>
-                        <div class="project-info">
+                        <div className="project-info">
                             <h3>Test Name</h3>
-                            <p class="special-p">My creative ability is very difficult to measure because it can manifest in so many surprising and.</p>
+                            <p className="special-p">My creative ability is very difficult to measure because it can manifest in so many surprising and.</p>
                         </div>
                     </div>
                 </div>

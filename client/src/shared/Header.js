@@ -1,9 +1,21 @@
 import React from 'react';
 import './style/Header.css';
 import { Link } from 'react-router-dom';
+import Nav from 'react-bootstrap/Nav';
 import logo from '../assets/images/logo.png'
+import { removeAuthUser, getAuthUser } from '../helper/Storage';
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+    const navigate = useNavigate();
+    const auth = getAuthUser();
+    console.log(auth);
+
+    const Logout = () => {
+        removeAuthUser();
+        navigate("/");
+    };
+
     return (
         <header>
             <div className="container">
@@ -18,7 +30,12 @@ const Header = () => {
                         <li><Link to={'/'}>Home</Link></li>
                         <li><Link to={'/about'}>About</Link></li>
                         <li><Link to={'/contact'}>Contact</Link></li>
-                        <li><Link to={'/login'}>Login</Link></li>
+                        {!auth && (
+                            <li><Link to={'/login'}>Login</Link></li>
+                        )}
+                        {auth && (
+                            <li><Nav.Link onClick={Logout} className='HeaderLogout'>Logout</Nav.Link></li>
+                        )}
                     </ul>
                 </nav>
             </div>
