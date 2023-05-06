@@ -74,7 +74,7 @@ class Response {
     static async getResponses(search) {
         try {
             if (search) {
-                search = `where name LIKE '%${search}%'`
+                search = `where response LIKE '%${search}%'`
             }
             const query = util.promisify(connection.query).bind(connection);
             const responses = await query(`select * from responses ${search}`);

@@ -108,10 +108,28 @@ class User {
         }
     }
 
+    static async checkEmail(email, user_id) {
+        const query = util.promisify(connection.query).bind(connection);
+        const user = await query("select email from users where id = ? ", [user_id]);
+        if(user[0].email == email || !await this.IsEmailExist(email)){
+            return true;
+        }
+        return false;
+    }
+
     static async IsPhoneExist(phone) {
         const query = util.promisify(connection.query).bind(connection);
         const phoneExist = await query("select * from users where phone = ?", [phone]);
         if(phoneExist.length > 0){
+            return true;
+        }
+        return false;
+    }
+
+    static async checkPhone(phone, user_id) {
+        const query = util.promisify(connection.query).bind(connection);
+        const user = await query("select phone from users where id = ? ", [user_id]);
+        if(user[0].phone == phone || !await this.IsPhoneExist(phone)){
             return true;
         }
         return false;
@@ -166,10 +184,13 @@ class User {
         }
     }
 
-    static async getUsers() {
+    static async getUsers(search) {
         try {
+            if (search) {
+                search = `where name LIKE '%${search}%'`
+            }
             const query = util.promisify(connection.query).bind(connection);
-            const users = await query('select ID, name, email, phone, status, token, role from users;');
+            const users = await query(`select ID, name, email, phone, status, token, role from users ${search};`);
             return users;
         } catch (error) {
             console.log(error);
@@ -181,6 +202,34 @@ class User {
             const query = util.promisify(connection.query).bind(connection);
             const user = await query(`select * from users where email = "${email}"`);
             return user[0];
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    static async getUserById(id) {
+        try {
+            const query = util.promisify(connection.query).bind(connection);
+            const user = await query(`select * from users where id = "${id}"`);
+            return user[0];
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    static async Update(editedUser, id) {
+        try {
+            const query = util.promisify(connection.query).bind(connection);
+            await query("update users set ? where id = ? ", [editedUser, id]);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    static async Delete(id) {
+        try {
+            const query = util.promisify(connection.query).bind(connection);
+            await query("delete from users where id = ? ", [id]);
         } catch (error) {
             console.log(error);
         }

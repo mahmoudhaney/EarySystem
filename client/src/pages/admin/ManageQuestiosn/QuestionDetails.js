@@ -78,7 +78,7 @@ const QuestionDetails = () => {
                                 </ListGroup>
                             </ListGroup.Item>
                             
-                            <Link to={"/admin/manage-questions/update/5"}>
+                            <Link to={"/admin/manage-questions/update/" + question.result.ID}>
                                 <Button className="btn btn-primary w-100" variant="primary" type="submit">
                                     Update
                                 </Button>

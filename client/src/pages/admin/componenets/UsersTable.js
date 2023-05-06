@@ -1,37 +1,128 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import Table from 'react-bootstrap/Table';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import Placeholder from 'react-bootstrap/Placeholder';
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
+import {getAuthUser} from '../../../helper/Storage';
 
 const UsersTable = () => {
+    const auth = getAuthUser();
+
+    const [search, setSearch] = useState ("");
+    const [users, setUsers] = useState ({
+        loading: true,
+        results: [],
+        err: null,
+        reload: 0,
+    });
+
+    useEffect(() => {
+        setUsers({ ...users, loading: true});
+        axios
+            .get("http://localhost:5000/auth/users", {params: {search: search,},})
+            .then((resp) => {
+                setUsers({ ...users, results: resp.data, loading: false, err: null });
+            })
+            .catch((err) => {
+                setUsers({ ...users, loading: false, err: "Something went wrong"});
+            });
+    }, [users.reload]);
+
+    const searchResponses = (e) => {
+        e.preventDefault();
+        setUsers({ ...users, reload: users.reload + 1});
+    }
+
+    const deleteUser = (user_id) => {
+        axios
+            .delete("http://localhost:5000/auth/" + user_id, {
+                headers: {token: auth.token,},
+            })
+            .then((resp) => {
+                setUsers({ ...users, reload: users.reload + 1, err: null})
+            })
+            .catch((err) => {
+                setUsers({ ...users, loading: false, err: "Something went wrong"});
+            });
+    };
+
     return (
         <div className="col-7">
-            <Link to={"/admin/manage-users/add"} className="btn btn-success mb-3">
-            Add New User +
-            </Link>
-            <Table striped bordered hover >
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Ahmed Mohamd</td>
-                        <td>agmed@gmail.com</td>
-                        <td>Approved</td>
-                        <td>
-                            <Link to={"/admin/manage-users/5"} className="btn btn-sm btn-info"> Show </Link>
-                            <Link to={"/admin/manage-users/update/5"} className="btn btn-sm btn-primary mx-2"> Update </Link>
-                            <button className="btn btn-sm btn-danger"> Delete </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </Table>
+            {users.loading === true && (
+                <div className="text-center mb-3">
+                    <Placeholder as="p" animation="glow">
+                        <Placeholder xs={12} />
+                    </Placeholder>
+                    <Placeholder as="p" animation="wave">
+                        <Placeholder xs={12} />
+                    </Placeholder>
+                    <Placeholder as="p" animation="glow">
+                        <Placeholder xs={12} />
+                    </Placeholder>
+                </div>
+            )}
+
+            {users.loading === false && users.err != null && (
+                <Alert variant="danger">
+                {users.err}
+                </Alert>
+            )}
+
+            {users.loading === false && users.err == null && users.results.length === 0 && (
+                <Alert variant="info">
+                Not Found
+                </Alert>
+            )}
+
+            {users.loading === false && users.err == null && (
+                <>
+                    <Link to={"/admin/manage-users/add"} className="btn btn-success mb-3">
+                    Add New User +
+                    </Link>
+
+                    <Form onSubmit={searchResponses}>
+                        <Form.Group className="mb-3 d-flex">
+                            <Form.Control className='rounded-0' type="text" placeholder="Search Responses"
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                            />
+                            <Button className="btn btn-dark rounded-0" variant="primary" type="submit">
+                                Search
+                            </Button>
+                        </Form.Group>
+                    </Form>
+
+                    <Table striped bordered hover >
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {users.results.map((user) => (
+                                <tr key={user.ID}>
+                                    <td>{user.ID}</td>
+                                    <td>{user.name}</td>
+                                    <td>{user.email}</td>
+                                    <td>{user.status}</td>
+                                    <td>
+                                        <Link to={"/admin/manage-users/" + user.ID} className="btn btn-sm btn-info"> Show </Link>
+                                        <Link to={"/admin/manage-users/update/" + user.ID} className="btn btn-sm btn-primary mx-2"> Update </Link>
+                                        <button className="btn btn-sm btn-danger" onClick={(e) => {deleteUser(user.ID)}}> Delete </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Table>
+                </>
+            )} 
         </div>
     );
 };
