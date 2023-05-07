@@ -47,6 +47,10 @@ const SideBar = () => {
                     </ListGroup.Item>
     
                     <ListGroup.Item as="li">
+                        <Link to={'/admin/unapproved-users'}>Unapproved Users</Link>
+                    </ListGroup.Item>
+    
+                    <ListGroup.Item as="li">
                         <Link to={'/admin/manage-questions'}>Manage Questions</Link>
                     </ListGroup.Item>
     

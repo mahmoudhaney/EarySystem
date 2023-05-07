@@ -65,7 +65,6 @@ router.post(
 // Approve User
 router.put(
     "/approve-user/:id", 
-    admin, 
     async (req, res) => {
         try {
             if (!validationResult(req).isEmpty()) {

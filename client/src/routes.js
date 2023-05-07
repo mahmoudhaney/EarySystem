@@ -25,6 +25,7 @@ import UserDetails from "./pages/admin/ManageUsers/UserDetails";
 import GuestAuth from "./middleware/GuestAuth";
 import UserAuth from "./middleware/UserAuth";
 import AdminAuth from "./middleware/AdminAuth";
+import UnapprovedUsers from "./pages/admin/ManageUsers/UnapprovedUsers";
 
 export const router = createBrowserRouter([
     {
@@ -67,6 +68,10 @@ export const router = createBrowserRouter([
                     {
                         path: "my-profile",
                         element: <Admin />,
+                    },
+                    {
+                        path: "unapproved-users",
+                        element: <UnapprovedUsers />,
                     },
                     {
                         path: "manage-users",
