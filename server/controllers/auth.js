@@ -52,12 +52,34 @@ router.post(
             res.status(404).json({msg: "Invalid email !"});
         } else if (!await User.CheckPassword(req.body.email, req.body.password)){
             res.status(404).json({msg: "wrong password !"});
+        } else if (!await User.IsApproved(req.body.email)){
+            res.status(404).json({msg: "wait for admin approval !"});
         } else {
             res.status(200).json(await User.getUser(req.body.email));
         }       
     } catch (error) {
         res.status(500).json({error: error});
     }
+});
+
+// Approve User
+router.put(
+    "/approve-user/:id", 
+    admin, 
+    async (req, res) => {
+        try {
+            if (!validationResult(req).isEmpty()) {
+                res.status(400).json({errors: validationResult(req).array()});
+            } else if (!await User.IsExist(req.params.id)) {
+                res.status(404).json({msg: "user not found !"});
+            } else {
+                await User.ApproveUser(req.params.id);
+                res.status(200).json({msg: "User Approved Successfully"});
+            }
+        } catch (error) {
+            console.log(error);
+            res.status(500).json(error);
+        }
 });
 
 // Update a specific User
@@ -122,6 +144,17 @@ router.get(
     async (req, res) => {
     try {
         res.status(200).json(await User.getUsers(req.query.search));
+    } catch (error) {
+        res.status(500).json({error: error});
+    }
+});
+
+// List All Unapproved Users
+router.get(
+    "/unapproved-users",
+    async (req, res) => {
+    try {
+        res.status(200).json(await User.getUnapprovedUsers(req.query.search));
     } catch (error) {
         res.status(500).json({error: error});
     }

@@ -149,10 +149,10 @@ class User {
         }
     }
 
-    static async IsApproved(id) {
+    static async IsApproved(email) {
         try {
             const query = util.promisify(connection.query).bind(connection);
-            const user = await query("select status from users where id = ? ", [id]);
+            const user = await query("select status from users where email = ? ", [email]);
             if (user[0].status) {
                 return true;
             }
@@ -197,6 +197,21 @@ class User {
         }
     }
 
+    static async getUnapprovedUsers(search) {
+        try {
+            if (search) {
+                search = `and name LIKE '%${search}%'`
+            } else {
+                search = "";
+            }
+            const query = util.promisify(connection.query).bind(connection);
+            const users = await query(`select ID, name, email, phone, status, token, role from users where status = 0 ${search};`);
+            return users;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     static async getUser(email) {
         try {
             const query = util.promisify(connection.query).bind(connection);
@@ -221,6 +236,15 @@ class User {
         try {
             const query = util.promisify(connection.query).bind(connection);
             await query("update users set ? where id = ? ", [editedUser, id]);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    static async ApproveUser(user_id) {
+        try {
+            const query = util.promisify(connection.query).bind(connection);
+            await query(`update users set status = 1 where id = ${user_id} `);
         } catch (error) {
             console.log(error);
         }
