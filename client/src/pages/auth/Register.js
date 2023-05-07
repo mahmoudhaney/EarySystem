@@ -36,7 +36,7 @@ const Register = () => {
                 navigate("/user");
             })
             .catch((errors) => {
-                setRegister({ ...resiter, loading: false, err: errors.response.data.msg, });
+                setRegister({ ...resiter, loading: false, err: "Something went wrong", });
             });
     };
 

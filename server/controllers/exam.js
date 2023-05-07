@@ -81,7 +81,7 @@ router.post(
 });
 
 // Get Exam Result
-router.put("/result/:user_id", authorized, async (req, res) => {
+router.put("/result/:user_id", async (req, res) => {
     try {
         if (!await User.IsExist(req.params.user_id)) {
             res.status(404).json({msg: "user not found !"});

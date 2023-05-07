@@ -26,6 +26,7 @@ import GuestAuth from "./middleware/GuestAuth";
 import UserAuth from "./middleware/UserAuth";
 import AdminAuth from "./middleware/AdminAuth";
 import UnapprovedUsers from "./pages/admin/ManageUsers/UnapprovedUsers";
+import Result from "./pages/user/componenets/Result";
 
 export const router = createBrowserRouter([
     {
@@ -153,6 +154,10 @@ export const router = createBrowserRouter([
                     {
                         path: "test",
                         element: <Test />,
+                    },
+                    {
+                        path: "result",
+                        element: <Result />,
                     },
                     {
                         path: "history",
