@@ -6,23 +6,23 @@ const Features = () => {
         <div id="features" className="section-padding">
             <div className="container grid-3">
                 <div className="feature">
-                    <h4>Tell Us Your Idea</h4>
+                    <h4>Comprehensive Exams</h4>
                     <p className="special-p">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut lab
+                    Our hearing assistance exams are designed to be comprehensive, ensuring that we can provide you with the most accurate diagnosis possible.
                     </p>
                 </div>
     
                 <div className="feature">
-                    <h4>We Will Do All The Work</h4>
+                    <h4>Qualified Professionals</h4>
                     <p className="special-p">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut lab
+                    Our team of qualified professionals has the experience and knowledge necessary to provide you with the care you need.
                     </p>
                 </div>
     
                 <div className="feature">
-                    <h4>Your Product is Worldwide</h4>
+                    <h4>Technology</h4>
                     <p className="special-p">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut lab
+                    We use the latest technology and equipment to ensure that you receive the most accurate and effective hearing assistance possible.
                     </p>
                 </div>
             </div>

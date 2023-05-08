@@ -13,13 +13,11 @@ const About = () => {
                     </div>
                     <div className="about-text">
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda similique 
-                            fugiat rerum odit qui aut nisi maxime libero ab aliquam. Fugit non vitae porro dolor fugiat aliquam nemo odio ullam!
+                        We won’t stop until we see a world where deaf people and those with hearing loss or tinnitus are fully included
                         </p>
                         <hr/>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda similique fugiat
-                            rerum odit qui aut nisi maxime libero ab aliquam. Fugit non vitae porro dolor fugiat aliquam nemo odio ullam!
+                        Where everyone is treated with respect, dignity and understanding
                         </p>
                     </div>
                 </div>
@@ -27,5 +25,6 @@ const About = () => {
         </div>
     );
 };
+
 
 export default About;

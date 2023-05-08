@@ -29,11 +29,14 @@ const Header = () => {
                         <li><Link to={'/'}>Home</Link></li>
                         <li><Link to={'/about'}>About</Link></li>
                         <li><Link to={'/contact'}>Contact</Link></li>
+                        {auth &&auth.role==1 && (
+                            <li><Link to={'/admin'}  className='HeaderLogout'>Dashboard</Link></li>
+                        )}
                         {!auth && (
                             <li><Link to={'/login'}>Login</Link></li>
                         )}
-                        {auth && (
-                            <li><Nav.Link onClick={Logout} className='HeaderLogout'>Logout</Nav.Link></li>
+                        {auth &&auth.role==0 && (
+                            <li><Link to={'/user'}  className='HeaderLogout'>MyProfile</Link></li>
                         )}
                     </ul>
                 </nav>

@@ -1,8 +1,8 @@
 const mysql      = require('mysql');
 const connection = mysql.createConnection({
     host     : 'localhost',
-    user     : 'sqluser',
-    password : '123456',
+    user     : 'root',
+    password : '',
     database : 'earysystem',
     port     : '3306'
 });
