@@ -9,10 +9,10 @@ const Contact = () => {
             <div className="col-6">
                 <h1 className="section-title">Contact Us</h1>
 
-                <div className="login">
+                {/* <div className="login">
                     <Alert variant="danger">
                         Invalid email or password
-                    </Alert>
+                    </Alert> */}
 
                     <Form>
                         <Form.Group className="mb-3">
@@ -32,7 +32,7 @@ const Contact = () => {
                         </Button>
                     </Form>
                 </div>
-            </div>
+            {/* </div> */}
         </div>
     );
 };
