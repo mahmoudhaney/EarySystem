@@ -18,6 +18,7 @@ const Register = () => {
         phone: "",
         loading: false,
         err: null,
+        success: null,
     });
 
     const RegisterFunction = (e) => {
@@ -31,9 +32,8 @@ const Register = () => {
                 phone: resiter.phone
             })
             .then((resp) => {
-                setRegister({ ...resiter, loading: false, err: null });
-                setAuthUser(resp.data);
-                navigate("/user");
+                setRegister({ ...resiter, loading: false, err: null, success: "Question Created Successfully", });
+                navigate("/login");
             })
             .catch((errors) => {
                 setRegister({ ...resiter, loading: false, err: "Something went wrong", });
@@ -51,6 +51,12 @@ const Register = () => {
                         {resiter.err}
                         </Alert>
                     )} 
+
+                    {resiter.success && (
+                        <Alert variant="success">
+                        {resiter.success}
+                        </Alert>
+                    )}
 
                     <Form onSubmit={RegisterFunction}>
                         <Form.Group className="mb-3">

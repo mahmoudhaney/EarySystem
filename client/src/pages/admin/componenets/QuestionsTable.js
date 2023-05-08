@@ -24,7 +24,6 @@ const QuestionsTable = () => {
         axios
             .get("http://localhost:5000/question", {params: {search: search,},})
             .then((resp) => {
-                console.log(resp);
                 setQuestions({ ...questions, results: resp.data, loading: false, err: null });
             })
             .catch((err) => {

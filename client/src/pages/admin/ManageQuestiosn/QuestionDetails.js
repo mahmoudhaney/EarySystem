@@ -23,7 +23,6 @@ const QuestionDetails = () => {
         axios
             .get("http://localhost:5000/question/" + id)
             .then((resp) => {
-                console.log(resp);
                 setQuestion({ ...question, result: resp.data, loading: false, err: null });
             })
             .catch((err) => {

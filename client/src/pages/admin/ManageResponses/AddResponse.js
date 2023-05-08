@@ -102,7 +102,7 @@ const AddResponse = () => {
                         <Form.Select aria-label="Correctness" className="mb-3"
                         value={response.is_correct}
                         onChange={(e) => setResponse({ ...response, is_correct: e.target.value })}>
-                            <option disabled>Choose</option>
+                            <option value="" selected disabled hidden>Choose here</option>
                             <option value="1"> Correct </option>
                             <option value="0"> Wrong   </option>
                         </Form.Select>
@@ -110,7 +110,7 @@ const AddResponse = () => {
                         <Form.Select aria-label="Questions" className="mb-3" 
                         value={response.question_id}
                         onChange={(e) => setResponse({ ...response, question_id: e.target.value })}>
-                            <option disabled>Choose a Question</option>
+                            <option value="" selected disabled hidden>Choose here</option>
                             {questions.results.map((question) => (
                                 <option key={question.ID} value={question.ID}>{question.question}</option>
                             ))}

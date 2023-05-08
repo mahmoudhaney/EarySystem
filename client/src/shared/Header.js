@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 const Header = () => {
     const navigate = useNavigate();
     const auth = getAuthUser();
-    console.log(auth);
 
     const Logout = () => {
         removeAuthUser();

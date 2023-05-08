@@ -29,7 +29,6 @@ const Login = () => {
             .then((resp) => {
                 setLogin({ ...login, loading: false, err: null });
                 setAuthUser(resp.data);
-                console.log("To Navigate", resp.data);
                 if (resp.data.role === 0) {
                     navigate("/user");
                 } else {
