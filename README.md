@@ -10,17 +10,17 @@ A web Application called "Early", which helps people to check their hearing prob
 
 ## Users
 1. Admin User
-    - [ ]  Login/ Logout
-    - [ ]  Update Profile
-    - [ ]  Manage other users accounts (CRUD)
-    - [ ]  Manage hearing assistance questions (CRUD)
-    - [ ]  Manage answers for each question (CRUD)
+    - [x]  Login/ Logout
+    - [x]  Update Profile
+    - [x]  Manage other users accounts (CRUD)
+    - [x]  Manage hearing assistance questions (CRUD)
+    - [x]  Manage answers for each question (CRUD)
 2. Normal User
-    - [ ]  Login/ Logout
-    - [ ]  Register
-    - [ ]  Update profile
-    - [ ]  Take the hearing assistance exam
-    - [ ]  Show history of Exams
+    - [x]  Login/ Logout
+    - [x]  Register
+    - [x]  Update profile
+    - [x]  Take the hearing assistance exam
+    - [x]  Show history of Exams
 
 ## Tools
 - Frontend should be in `React.js`
