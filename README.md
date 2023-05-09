@@ -26,3 +26,16 @@ A web Application called "Early", which helps people to check their hearing prob
 - Frontend should be in `React.js`
 - Backend should be in (`node.js` & `Express.js`)
 - Database (`MySQL`)
+
+## To Use the project
+After downloading the project repository and making sure that NodeJS is installed 
+1. Navigate to server on your terminal and run this command `npm i` to install backend end dependencies & `npm run dev` to execute
+2. Navigate to cliect on your terminal and run this command `npm i` to install front end dependencies & `npm start` to execute
+
+## APIs
+You can find all system APIs in this [file](server/EarySystem.postman_collection.json)
+
+## Demo
+
+https://github.com/mahmoudhaney/EarySystem/assets/83553963/b3edc9bf-c68f-4dff-bcd9-2e400597c0f5
+
